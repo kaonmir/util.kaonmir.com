@@ -14,10 +14,9 @@ export default function Textarea(props: TextareaProps) {
       className={`
         ${props.className}
         ${props.isError ? "border-red-500 focus:border-red-500" : "focus:border-blue-500"}
-        w-full h-20
+        w-full h-20 leading-4
         resize-none focus:outline-none shadow-none
-        textarea-bordered textarea-md textarea
-      `}
+        textarea-bordered textarea-md textarea`}
     />
   );
 }
