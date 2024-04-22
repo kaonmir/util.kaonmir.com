@@ -7,7 +7,11 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-export default function JsonWidget() {
+interface JsonWidgetProps {
+  isDragging: boolean;
+}
+
+export default function JsonWidget({ isDragging }: JsonWidgetProps) {
   const [text, setText] = useState<string>('{\n  "key": "value"\n}');
   const [error, setError] = useState<boolean>(false);
 
@@ -64,7 +68,12 @@ export default function JsonWidget() {
   };
 
   return (
-    <Widget enableFileDrop={true} onFileDrop={() => {}}>
+    <Widget
+      isDragging={isDragging}
+      onDrop={() => {
+        console.log("drop on widget");
+      }}
+    >
       <Textarea
         isError={error}
         className={""}
