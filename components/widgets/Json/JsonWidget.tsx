@@ -68,7 +68,7 @@ export default function JsonWidget() {
       <Textarea
         isError={error}
         className={""}
-        placeholder="Put Json data here"
+        placeholder="Put JSON data here"
         onChange={onChange}
         value={text}
       ></Textarea>
