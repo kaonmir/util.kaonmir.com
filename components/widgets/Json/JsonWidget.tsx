@@ -71,11 +71,18 @@ export default function JsonWidget({ isDragging }: JsonWidgetProps) {
     <Widget
       isDragging={isDragging}
       onDrop={(files: FileList) => {
+        if (files.length === 0) return;
         const file = files[0];
+
         const reader = new FileReader();
         reader.onload = (event) => {
           const result = event.target?.result;
+
           if (typeof result === "string") {
+            if (result.includes("�")) {
+              toast.error("Invalid file type");
+              return;
+            }
             setText(result);
           }
         };
