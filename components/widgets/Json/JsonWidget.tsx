@@ -70,8 +70,16 @@ export default function JsonWidget({ isDragging }: JsonWidgetProps) {
   return (
     <Widget
       isDragging={isDragging}
-      onDrop={() => {
-        console.log("drop on widget");
+      onDrop={(files: FileList) => {
+        const file = files[0];
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const result = event.target?.result;
+          if (typeof result === "string") {
+            setText(result);
+          }
+        };
+        reader.readAsText(file);
       }}
     >
       <Textarea
