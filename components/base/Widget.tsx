@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
 interface WidgetProps {
-  children: React.ReactNode;
-  isDragging: boolean;
+  children?: React.ReactNode;
+  isDragging?: boolean;
   onDrop?: (files: FileList) => void;
 }
 
