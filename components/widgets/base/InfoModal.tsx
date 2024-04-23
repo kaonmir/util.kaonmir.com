@@ -2,9 +2,11 @@ import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
 
-interface InfoModalProps {}
+interface InfoModalProps {
+  description: string;
+}
 
-export default function InfoModal({}: InfoModalProps) {
+export default function InfoModal({ description }: InfoModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
 
@@ -49,7 +51,7 @@ export default function InfoModal({}: InfoModalProps) {
         z-10 p-2 shadow-lg
       `}
         >
-          InfoModal
+          <p className="text-sm text-gray-600 leading-4">{description}</p>
         </div>
       )}
     </div>

@@ -33,7 +33,12 @@ function DragOverlay({ isDraggingOver }: { isDraggingOver: boolean }) {
   );
 }
 
-export default function Widget({ children, isDragging, onDrop }: WidgetProps) {
+export default function Widget({
+  children,
+  description,
+  isDragging,
+  onDrop,
+}: WidgetProps) {
   const [isDraggingOver, setIsDraggingOver] = useState<boolean>(false);
 
   // Drag and drop events
@@ -62,7 +67,7 @@ export default function Widget({ children, isDragging, onDrop }: WidgetProps) {
       onDrop={onDropHandler}
     >
       {onDrop && isDragging && <DragOverlay isDraggingOver={isDraggingOver} />}
-      <InfoModal />
+      <InfoModal description={description} />
 
       <div className="w-9/12 flex h-full flex-col items-center justify-center overflow-hidden">
         {children}

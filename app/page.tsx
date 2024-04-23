@@ -1,8 +1,8 @@
 "use client";
 
-import CrontabWidget from "@/components/widgets/Cron/CronWidget";
-import InspirationalQuotesWidget from "@/components/widgets/InspirationalQuotes/InspirationalQuotesWidget";
-import JsonWidget from "@/components/widgets/Json/JsonWidget";
+import CrontabWidget from "@/components/widgets/cron/CronWidget";
+import InspirationalQuotesWidget from "@/components/widgets/inspirational_quotes/InspirationalQuotesWidget";
+import JsonWidget from "@/components/widgets/json/JsonWidget";
 import { useState } from "react";
 
 export default function Home() {

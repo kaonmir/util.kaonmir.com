@@ -10,7 +10,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-import Widget from "@/components/base/Widget";
+import Widget from "@/components/widgets/base/Widget";
 
 interface IWidgetProps {}
 
