@@ -46,6 +46,7 @@ export default function Widget({ children, isDragging, onDrop }: WidgetProps) {
     e.preventDefault();
     if (onDrop === undefined) return;
     onDrop(e.dataTransfer.files);
+    setIsDraggingOver(false);
   };
 
   return (
