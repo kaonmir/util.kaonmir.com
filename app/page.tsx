@@ -1,6 +1,7 @@
 "use client";
 
 import CrontabWidget from "@/components/widgets/Cron/CronWidget";
+import InspirationalQuotesWidget from "@/components/widgets/InspirationalQuotes/InspirationalQuotesWidget";
 import JsonWidget from "@/components/widgets/Json/JsonWidget";
 import { useState } from "react";
 
@@ -23,6 +24,7 @@ export default function Home() {
     >
       <div className="w-full min-w-72 p-0 sm:p-2">
         <div className="flex flex-wrap gap-x-5 gap-y-5 ">
+          <InspirationalQuotesWidget />
           <JsonWidget isDragging={isDragging} />
           <CrontabWidget />
         </div>
