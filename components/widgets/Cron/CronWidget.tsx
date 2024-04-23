@@ -11,11 +11,10 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Widget from "@/components/base/Widget";
-interface IWidgetProps {
-  isDragging: boolean;
-}
 
-export default function CrontabWidget({ isDragging }: IWidgetProps) {
+interface IWidgetProps {}
+
+export default function CrontabWidget({}: IWidgetProps) {
   const [text, setText] = useState<string>("5 4 * 2,4 1");
   const [errorCode, setErrorCode] = useState<number>(0);
   const [cursorUnit, setCursorUnit] = useState<number>(-1);
@@ -80,7 +79,7 @@ export default function CrontabWidget({ isDragging }: IWidgetProps) {
   };
 
   return (
-    <Widget isDragging={isDragging}>
+    <Widget>
       <div className="mb-6 h-5 text-sm text-gray-500">
         {errorCode === 0 && stack[nextStackIndex] && (
           <div className="flex flex-row items-center justify-center gap-x-3">

@@ -24,7 +24,7 @@ export default function Home() {
       <div className="w-full min-w-72 p-0 sm:p-2">
         <div className="flex flex-wrap gap-x-5 gap-y-5 ">
           <JsonWidget isDragging={isDragging} />
-          <CrontabWidget isDragging={isDragging} />
+          <CrontabWidget />
         </div>
       </div>
     </main>
