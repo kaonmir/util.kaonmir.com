@@ -1,6 +1,7 @@
 import { faInfo, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
+import InfoModal from "./InfoModal";
 
 interface WidgetProps {
   children?: React.ReactNode;
@@ -55,19 +56,14 @@ export default function Widget({ children, isDragging, onDrop }: WidgetProps) {
 
   return (
     <article
-      className="flex aspect-video w-72 items-center justify-center rounded-lg bg-gray-100 relative overflow-hidden"
+      className="flex aspect-video w-72 items-center justify-center rounded-lg bg-gray-100 relative"
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
       onDrop={onDropHandler}
     >
       {onDrop && isDragging && <DragOverlay isDraggingOver={isDraggingOver} />}
-      {/* top right info icon  */}
-      <div className="absolute top-0 right-0 m-2 z-10">
-        <FontAwesomeIcon
-          icon={faInfoCircle}
-          className="clickable text-gray-300 hover:text-gray-500"
-        />
-      </div>
+      <InfoModal />
+
       <div className="w-9/12 flex h-full flex-col items-center justify-center overflow-hidden">
         {children}
       </div>
