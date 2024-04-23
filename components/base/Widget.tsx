@@ -1,9 +1,13 @@
+import { faInfo, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
 
 interface WidgetProps {
   children?: React.ReactNode;
   isDragging?: boolean;
   onDrop?: (files: FileList) => void;
+
+  description: string;
 }
 
 function DragOverlay({ isDraggingOver }: { isDraggingOver: boolean }) {
@@ -57,6 +61,13 @@ export default function Widget({ children, isDragging, onDrop }: WidgetProps) {
       onDrop={onDropHandler}
     >
       {onDrop && isDragging && <DragOverlay isDraggingOver={isDraggingOver} />}
+      {/* top right info icon  */}
+      <div className="absolute top-0 right-0 m-2 z-10">
+        <FontAwesomeIcon
+          icon={faInfoCircle}
+          className="clickable text-gray-300 hover:text-gray-500"
+        />
+      </div>
       <div className="w-9/12 flex h-full flex-col items-center justify-center overflow-hidden">
         {children}
       </div>

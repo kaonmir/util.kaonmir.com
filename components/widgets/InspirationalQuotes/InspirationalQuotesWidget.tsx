@@ -18,7 +18,7 @@ export default function InspirationalQuotesWidget() {
   }, []);
 
   return (
-    <Widget>
+    <Widget description="Inspirational Quotes">
       <p className="text-xl text-center">&quot;{quote}&quot;</p>
       <p className="text-md text-center mt-3">- {author}</p>
     </Widget>
