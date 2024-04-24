@@ -11,6 +11,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Widget from "@/components/base/Widget";
+
 interface IWidgetProps {}
 
 export default function CrontabWidget({}: IWidgetProps) {

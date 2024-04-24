@@ -7,7 +7,11 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-export default function JsonWidget() {
+interface JsonWidgetProps {
+  isDragging: boolean;
+}
+
+export default function JsonWidget({ isDragging }: JsonWidgetProps) {
   const [text, setText] = useState<string>('{\n  "key": "value"\n}');
   const [error, setError] = useState<boolean>(false);
 
@@ -64,11 +68,31 @@ export default function JsonWidget() {
   };
 
   return (
-    <Widget enableFileDrop={true} onFileDrop={() => {}}>
+    <Widget
+      isDragging={isDragging}
+      onDrop={(files: FileList) => {
+        if (files.length === 0) return;
+        const file = files[0];
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const result = event.target?.result;
+
+          if (typeof result === "string") {
+            if (result.includes("�")) {
+              toast.error("Invalid file type");
+              return;
+            }
+            setText(result);
+          }
+        };
+        reader.readAsText(file);
+      }}
+    >
       <Textarea
         isError={error}
         className={""}
-        placeholder="Put Json data here"
+        placeholder="Put JSON data here"
         onChange={onChange}
         value={text}
       ></Textarea>
