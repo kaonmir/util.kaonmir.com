@@ -1,9 +1,9 @@
 "use client";
 
-import ButtonGroup from "@/components/base/ButtonGroup";
-import Textarea from "@/components/base/Textarea";
-import Widget from "@/components/base/Widget";
-import { faL } from "@fortawesome/free-solid-svg-icons";
+import ButtonGroup from "@/components/util/ButtonGroup";
+import Textarea from "@/components/util/Textarea";
+import { isMobile } from "@/components/util/helper";
+import Widget from "@/components/widget/base/Widget";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -40,7 +40,9 @@ export default function JsonWidget({ isDragging }: JsonWidgetProps) {
     navigator.clipboard
       .writeText(JSON.stringify(value, null, 2))
       .then(() => {
-        toast.success("Copied to clipboard");
+        if (!isMobile()) {
+          toast.success("Copied to clipboard");
+        }
       })
       .catch((err) => {
         console.error("Could not copy text: ", err);
@@ -59,7 +61,9 @@ export default function JsonWidget({ isDragging }: JsonWidgetProps) {
     navigator.clipboard
       .writeText(JSON.stringify(value))
       .then(() => {
-        toast.success("Copied to clipboard");
+        if (!isMobile()) {
+          toast.success("Copied to clipboard");
+        }
       })
       .catch((err) => {
         console.error("Could not copy text: ", err);
@@ -67,35 +71,40 @@ export default function JsonWidget({ isDragging }: JsonWidgetProps) {
       });
   };
 
+  const onDrop = (files: FileList) => {
+    if (files.length === 0) return;
+    const file = files[0];
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const result = event.target?.result;
+
+      if (typeof result === "string") {
+        if (result.includes("\uFFFD")) {
+          toast.error("Invalid file type");
+          return;
+        }
+        setText(result);
+      }
+    };
+    reader.readAsText(file);
+  };
+
   return (
     <Widget
+      description="JSON Beautifier and Minifier"
       isDragging={isDragging}
-      onDrop={(files: FileList) => {
-        if (files.length === 0) return;
-        const file = files[0];
-
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          const result = event.target?.result;
-
-          if (typeof result === "string") {
-            if (result.includes("�")) {
-              toast.error("Invalid file type");
-              return;
-            }
-            setText(result);
-          }
-        };
-        reader.readAsText(file);
-      }}
+      onDrop={onDrop}
     >
-      <Textarea
-        isError={error}
-        className={""}
-        placeholder="Put JSON data here"
-        onChange={onChange}
-        value={text}
-      ></Textarea>
+      <div className="h-20">
+        <Textarea
+          isError={error}
+          className={""}
+          placeholder="Put JSON data here"
+          onChange={onChange}
+          value={text}
+        ></Textarea>
+      </div>
       <ButtonGroup
         buttons={[
           { type: "button", text: "Beautify", onClick: onClickBeaufify },
