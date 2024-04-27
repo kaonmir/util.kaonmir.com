@@ -2,6 +2,7 @@
 
 import ButtonGroup from "@/components/util/ButtonGroup";
 import Textarea from "@/components/util/Textarea";
+import { isMobile } from "@/components/util/helper";
 import Widget from "@/components/widget/base/Widget";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -39,7 +40,9 @@ export default function JsonWidget({ isDragging }: JsonWidgetProps) {
     navigator.clipboard
       .writeText(JSON.stringify(value, null, 2))
       .then(() => {
-        toast.success("Copied to clipboard");
+        if (!isMobile()) {
+          toast.success("Copied to clipboard");
+        }
       })
       .catch((err) => {
         console.error("Could not copy text: ", err);
@@ -58,7 +61,9 @@ export default function JsonWidget({ isDragging }: JsonWidgetProps) {
     navigator.clipboard
       .writeText(JSON.stringify(value))
       .then(() => {
-        toast.success("Copied to clipboard");
+        if (!isMobile()) {
+          toast.success("Copied to clipboard");
+        }
       })
       .catch((err) => {
         console.error("Could not copy text: ", err);
