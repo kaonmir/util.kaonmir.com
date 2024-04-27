@@ -10,7 +10,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-import Widget from "@/components/base/Widget";
+import Widget from "@/components/widget/base/Widget";
 
 interface IWidgetProps {}
 
@@ -79,7 +79,7 @@ export default function CrontabWidget({}: IWidgetProps) {
   };
 
   return (
-    <Widget>
+    <Widget description="You can set the cron time and check the next execution time.">
       <div className="mb-6 h-5 text-sm text-gray-500">
         {errorCode === 0 && stack[nextStackIndex] && (
           <div className="flex flex-row items-center justify-center gap-x-3">

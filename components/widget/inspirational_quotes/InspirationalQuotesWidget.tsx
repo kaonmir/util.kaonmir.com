@@ -1,4 +1,4 @@
-import Widget from "@/components/base/Widget";
+import Widget from "@/components/widget/base/Widget";
 import React, { useEffect } from "react";
 
 export default function InspirationalQuotesWidget() {
@@ -18,7 +18,7 @@ export default function InspirationalQuotesWidget() {
   }, []);
 
   return (
-    <Widget>
+    <Widget description="Inspirational Quotes">
       <p className="text-xl text-center">&quot;{quote}&quot;</p>
       <p className="text-md text-center mt-3">- {author}</p>
     </Widget>

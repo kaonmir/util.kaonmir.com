@@ -1,9 +1,8 @@
 "use client";
 
-import ButtonGroup from "@/components/base/ButtonGroup";
-import Textarea from "@/components/base/Textarea";
-import Widget from "@/components/base/Widget";
-import { faL } from "@fortawesome/free-solid-svg-icons";
+import ButtonGroup from "@/components/util/ButtonGroup";
+import Textarea from "@/components/util/Textarea";
+import Widget from "@/components/widget/base/Widget";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -69,6 +68,7 @@ export default function JsonWidget({ isDragging }: JsonWidgetProps) {
 
   return (
     <Widget
+      description="JSON Beautifier and Minifier"
       isDragging={isDragging}
       onDrop={(files: FileList) => {
         if (files.length === 0) return;
