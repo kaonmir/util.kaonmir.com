@@ -15,6 +15,8 @@ export default function InfoModal({ description }: InfoModalProps) {
   const [isLeft, setIsLeft] = useState<boolean>(false);
 
   useEffect(() => {
+    onResize();
+
     window.addEventListener("resize", onResize);
     return () => document.removeEventListener("resize", onResize);
   });
