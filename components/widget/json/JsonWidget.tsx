@@ -96,13 +96,15 @@ export default function JsonWidget({ isDragging }: JsonWidgetProps) {
       isDragging={isDragging}
       onDrop={onDrop}
     >
-      <Textarea
-        isError={error}
-        className={""}
-        placeholder="Put JSON data here"
-        onChange={onChange}
-        value={text}
-      ></Textarea>
+      <div className="h-20">
+        <Textarea
+          isError={error}
+          className={""}
+          placeholder="Put JSON data here"
+          onChange={onChange}
+          value={text}
+        ></Textarea>
+      </div>
       <ButtonGroup
         buttons={[
           { type: "button", text: "Beautify", onClick: onClickBeaufify },
