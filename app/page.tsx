@@ -22,8 +22,8 @@ export default function Home() {
         setIsDragging(false);
       }}
     >
-      <div className="w-full min-w-72 p-0 sm:p-2">
-        <div className="flex flex-wrap gap-x-5 gap-y-5 ">
+      <div className="w-full min-w-72 p-0 sm:p-2 mt-5">
+        <div className="flex flex-wrap gap-x-5 gap-y-5 justify-center">
           <InspirationalQuotesWidget />
           <JsonWidget isDragging={isDragging} />
           <CrontabWidget />
