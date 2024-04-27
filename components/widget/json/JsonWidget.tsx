@@ -71,28 +71,30 @@ export default function JsonWidget({ isDragging }: JsonWidgetProps) {
       });
   };
 
+  const onDrop = (files: FileList) => {
+    if (files.length === 0) return;
+    const file = files[0];
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const result = event.target?.result;
+
+      if (typeof result === "string") {
+        if (result.includes("\uFFFD")) {
+          toast.error("Invalid file type");
+          return;
+        }
+        setText(result);
+      }
+    };
+    reader.readAsText(file);
+  };
+
   return (
     <Widget
       description="JSON Beautifier and Minifier"
       isDragging={isDragging}
-      onDrop={(files: FileList) => {
-        if (files.length === 0) return;
-        const file = files[0];
-
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          const result = event.target?.result;
-
-          if (typeof result === "string") {
-            if (result.includes("�")) {
-              toast.error("Invalid file type");
-              return;
-            }
-            setText(result);
-          }
-        };
-        reader.readAsText(file);
-      }}
+      onDrop={onDrop}
     >
       <Textarea
         isError={error}
