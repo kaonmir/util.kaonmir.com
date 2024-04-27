@@ -38,22 +38,16 @@ export default function InfoModal({ description }: InfoModalProps) {
     <div>
       <div
         ref={infoRef}
-        className="absolute top-0 right-0 m-2 z-10 clickable text-gray-300 hover:text-gray-500"
         onClick={() => setIsOpened(!isOpened)}
       >
         <FontAwesomeIcon icon={faInfoCircle} />
       </div>
-      {isOpened && (
-        <div
-          ref={modalRef}
-          className={`
-        absolute top-0 right-0 w-40 -mr-[10.5rem] bg-white rounded-lg
-        z-10 p-2 shadow-lg
-      `}
-        >
-          <p className="text-sm text-gray-600 leading-4">{description}</p>
-        </div>
-      )}
+      <div
+        ref={modalRef}
+        className={`
+      >
+        <p className="text-sm text-gray-600 leading-4">{description}</p>
+      </div>
     </div>
   );
 }

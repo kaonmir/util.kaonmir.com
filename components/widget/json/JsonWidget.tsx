@@ -1,8 +1,8 @@
 "use client";
 
-import ButtonGroup from "@/components/utils/ButtonGroup";
-import Textarea from "@/components/utils/Textarea";
-import Widget from "@/components/widgets/base/Widget";
+import ButtonGroup from "@/components/util/ButtonGroup";
+import Textarea from "@/components/util/Textarea";
+import Widget from "@/components/widget/base/Widget";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 

@@ -1,4 +1,4 @@
-import Widget from "@/components/widgets/base/Widget";
+import Widget from "@/components/widget/base/Widget";
 import React, { useEffect } from "react";
 
 export default function InspirationalQuotesWidget() {
